@@ -40,15 +40,15 @@ public class TrackingSystem {
                                 launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
                         break;
                     case "PAYLOAD":
-                        obj = new Satellite(recordId, satelliteName, country, orbitType,
+                        obj = new Payload(recordId, satelliteName, country, orbitType,
                                 launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
                         break;
                     case "ROCKET BODY":
-                        obj = new Satellite(recordId, satelliteName, country, orbitType,
+                        obj = new RocketBody(recordId, satelliteName, country, orbitType,
                                 launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
                         break;
                     default:
-                        obj = new Satellite(recordId, satelliteName, country, orbitType,
+                        obj = new Unknown(recordId, satelliteName, country, orbitType,
                                 launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
                         break;
                 }

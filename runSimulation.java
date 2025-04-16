@@ -10,7 +10,7 @@ public class RunSimulation {
 
             switch (userType) {
                 case 1:
-                    menu = new ScientistMenu();
+                    menu = new ScientistMenu(null);
                     break;
                 case 2:
                     menu = new SpaceAgencyMenu();

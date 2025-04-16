@@ -1,4 +1,4 @@
-public abstract class SpaceObject {
+public abstract class SpaceObject implements Satellite{
     private String recordId;
     private String satelliteName;
     private String country;

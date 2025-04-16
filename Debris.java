@@ -1,4 +1,4 @@
-public class Debris extends SpaceObject implements Satellite {
+public class Debris extends SpaceObject{
     private boolean stillInOrbit;
     private String riskLevel;
 

@@ -1,4 +1,4 @@
-public class RocketBody extends SpaceObject implements Satellite {
+public class RocketBody extends SpaceObject {
 
     public RocketBody(String recordId, String satelliteName, String country, String orbitType,
                       int launchYear, String launchSite, double longitude,

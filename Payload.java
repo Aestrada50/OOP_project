@@ -1,4 +1,4 @@
-public class Payload extends SpaceObject implements Satellite {
+public class Payload extends SpaceObject {
 
     public Payload(String recordId, String satelliteName, String country, String orbitType,
                    int launchYear, String launchSite, double longitude,

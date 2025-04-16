@@ -1,4 +1,4 @@
-public class Unknown extends SpaceObject implements Satellite {
+public class Unknown extends SpaceObject {
 
     public Unknown(String recordId, String satelliteName, String country, String orbitType,
                    int launchYear, String launchSite, double longitude,

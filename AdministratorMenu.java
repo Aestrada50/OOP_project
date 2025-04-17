@@ -15,12 +15,15 @@ public class AdministratorMenu implements UserMenu {
             int choice = getInput();
             switch (choice) {
                 case 1:
+                    SystemLog.log("Administrator created a new user.");
                     System.out.println("[Stub] Creating user...");
                     break;
                 case 2:
+                    SystemLog.log("Administrator managed a user.");
                     System.out.println("[Stub] Managing user...");
                     break;
                 case 3:
+                    SystemLog.log("Administrator deleted a user.");
                     System.out.println("[Stub] Deleting user...");
                     break;
                 case 4:

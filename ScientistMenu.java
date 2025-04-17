@@ -1,5 +1,9 @@
 import java.util.*;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 import java.io.*;
+
 
 public class ScientistMenu implements UserMenu {
     private static final Scanner scanner = new Scanner(System.in);
@@ -63,6 +67,7 @@ public class ScientistMenu implements UserMenu {
             int choice = getInput();
             switch (choice) {
                 case 1:
+                    SystemLog.log("Scientist assessed objects in LEO");
                     List<SpaceObject> leoObjects = new ArrayList<>();
                     for (String type : new String[]{"DEBRIS", "PAYLOAD", "ROCKET BODY", "UNKNOWN"}) {
                         for (SpaceObject obj : trackingSystem.getObjectsByType(type)) {
@@ -124,6 +129,7 @@ public class ScientistMenu implements UserMenu {
             }
 
             System.out.println("Orbit assessment completed. Files generated.");
+            SystemLog.log("Scientist assessed Debris orbit status.");
         } catch (IOException e) {
             System.err.println("Failed to write output: " + e.getMessage());
         }

@@ -10,6 +10,7 @@ public class TrackingSystem {
     public TrackingSystem() {
         objectTypeMap = new HashMap<>();
         objectById = new HashMap<>();
+        loadObjectsFromCSV(file);
     }
 
     public void loadObjectsFromCSV(File file) {

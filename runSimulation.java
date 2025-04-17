@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class RunSimulation {
+public class runSimulation {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {

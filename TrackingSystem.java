@@ -5,16 +5,14 @@ public class TrackingSystem {
 
     private Map<String, List<SpaceObject>> objectTypeMap;
     private Map<String, SpaceObject> objectById;
-    private File file = new File("rso_metrics.csv");
 
     public TrackingSystem() {
         objectTypeMap = new HashMap<>();
         objectById = new HashMap<>();
-        loadObjectsFromCSV(file);
     }
 
-    public void loadObjectsFromCSV(File file) {
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+    public void loadObjectsFromCSV(String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",", -1); // -1 keeps empty values

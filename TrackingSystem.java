@@ -1,16 +1,30 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * The {@code TrackingSystem} class is responsible for managing and tracking space objects.
+ * It provides functionality to load space object data from a CSV file, retrieve objects
+ * by type or ID, and store them in appropriate data structures.
+ */
 public class TrackingSystem {
 
     private Map<String, List<SpaceObject>> objectTypeMap;
     private Map<String, SpaceObject> objectById;
 
+    /**
+     * Constructs a new {@code TrackingSystem} instance.
+     * Initializes the data structures for storing space objects.
+     */
     public TrackingSystem() {
         objectTypeMap = new HashMap<>();
         objectById = new HashMap<>();
     }
 
+    /**
+     * Loads space object data from a CSV file and populates the internal data structures.
+     *
+     * @param filename The name of the CSV file containing space object data.
+     */
     public void loadObjectsFromCSV(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line = br.readLine(); // Skip header
@@ -62,16 +76,32 @@ public class TrackingSystem {
         }
     }
 
-    // Getter
+    /**
+     * Retrieves a list of space objects by their type.
+     *
+     * @param type The type of space objects to retrieve (e.g., "DEBRIS", "PAYLOAD").
+     * @return A list of space objects of the specified type, or an empty list if none exist.
+     */
     public List<SpaceObject> getObjectsByType(String type) {
         return objectTypeMap.getOrDefault(type.toUpperCase(), new ArrayList<>());
     }
 
+    /**
+     * Retrieves a space object by its unique record ID.
+     *
+     * @param recordId The unique record ID of the space object.
+     * @return The space object with the specified record ID, or {@code null} if not found.
+     */
     public SpaceObject getObjectById(String recordId) {
         return objectById.get(recordId);
     }
 
-    // Helper functions
+    /**
+     * Safely parses a string into an integer.
+     *
+     * @param val The string to parse.
+     * @return The parsed integer, or 0 if parsing fails.
+     */
     private int parseIntSafe(String val) {
         try {
             return Integer.parseInt(val.trim());
@@ -80,6 +110,12 @@ public class TrackingSystem {
         }
     }
 
+    /**
+     * Safely parses a string into a long.
+     *
+     * @param val The string to parse.
+     * @return The parsed long, or 0L if parsing fails.
+     */
     private long parseLongSafe(String val) {
         try {
             return Long.parseLong(val.trim());
@@ -88,6 +124,12 @@ public class TrackingSystem {
         }
     }
 
+    /**
+     * Safely parses a string into a double.
+     *
+     * @param val The string to parse.
+     * @return The parsed double, or 0.0 if parsing fails.
+     */
     private double parseDoubleSafe(String val) {
         try {
             return Double.parseDouble(val.trim());

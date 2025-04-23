@@ -10,7 +10,13 @@ import java.io.*;
  * @author Noel Lozano
  */
 public class ScientistMenu implements UserMenu {
+    /**
+     * Scanner instance for user input.
+     */
     private static final Scanner scanner = new Scanner(System.in);
+    /**
+     * TrackingSystem instance to manage space objects.
+     */
     private TrackingSystem trackingSystem;
 
     /**

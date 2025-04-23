@@ -1,9 +1,22 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * RunSimulation class is the main entry point for the program.
+ * It initializes the TrackingSystem and provides a menu for users to select their type.
+ * It handles user input and directs them to the appropriate menu based on their selection.
+ * * @author Noel Lozano
+ */
 public class RunSimulation {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Main method to run the simulation.
+     * It initializes the TrackingSystem and provides a menu for users to select their type.
+     * It handles user input and directs them to the appropriate menu based on their selection.
+     * @param args Command line arguments (not used).
+     * @author Noel Lozano
+     */
     public static void main(String[] args) {
         TrackingSystem trackingSystem = new TrackingSystem();
         trackingSystem.loadObjectsFromCSV("rso_metrics.csv"); // Load your input CSV file
@@ -51,6 +64,11 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the main menu and returns the user's choice.
+     * @return The user's choice as a string.
+     * @author Noel Lozano
+     */
     private static String displayMainMenu() {
         System.out.println("\n=== Select User Type ===");
         System.out.println("1. Scientist");
@@ -62,6 +80,11 @@ public class RunSimulation {
         return scanner.nextLine().trim();
     }
 
+    /**
+     * Saves the final debris tracking report to a CSV file.
+     * @param trackingSystem The TrackingSystem instance containing the debris data.
+     * @author Noel Lozano
+     */
     private static void saveFinalDebrisReport(TrackingSystem trackingSystem) {
         try (PrintWriter out = new PrintWriter("debris_tracking_report.csv")) {
             out.println("RecordID,SatelliteName,Country,OrbitType,LaunchYear,LaunchSite,Longitude,AvgLongitude,Geohash,DaysOld,ConjunctionCount,StillInOrbit,RiskLevel");
@@ -80,6 +103,10 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Saves the log of the program's execution to a text file.
+     * @author Noel Lozano
+     */
     private static void saveLog() {
         try (PrintWriter log = new PrintWriter("latest_log.txt")) {
             log.printf("Program exited at %s%n", new java.util.Date());

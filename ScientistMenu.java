@@ -75,11 +75,14 @@ public class ScientistMenu implements UserMenu {
             int choice = getInput();
             String[] types = {"ROCKET BODY", "DEBRIS", "PAYLOAD", "UNKNOWN"};
             if (choice >= 1 && choice <= 4) {
-                List<SpaceObject> objects = trackingSystem.getObjectsByType(types[choice - 1]);
+                String currChoice = types[choice - 1];
+                List<SpaceObject> objects = trackingSystem.getObjectsByType(currChoice);
                 displayObjects(objects);
+                SystemLog.log("Scientist tracked " + currChoice.toLowerCase() + " in space.");
             } else if (choice == 5) return;
             else System.out.println("Invalid option. Try again.");
         }
+        
     }
 
     /**

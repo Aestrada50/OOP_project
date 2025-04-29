@@ -1,129 +1,95 @@
 import java.util.*;
-
 import java.io.*;
 
 /**
- * ScientistMenu class implements the UserMenu interface and provides a menu for scientists 
- * to track objects in space and assess their orbit status.
- * It allows the user to view different types of space objects, assess their status, and generate reports in CSV 
- * and TXT formats.
- * @author Noel Lozano
+ * ScientistMenu class provides a menu for scientists to track objects in space
+ * and assess the orbit status of debris. Extends BaseMenu for common functionality.
+ * 
+ * @author  Noel Lozano
  */
-public class ScientistMenu implements UserMenu {
-    /**
-     * Scanner instance for user input.
-     */
-    private static final Scanner scanner = new Scanner(System.in);
-    /**
-     * TrackingSystem instance to manage space objects.
-     */
+public class ScientistMenu extends BaseMenu {
     private TrackingSystem trackingSystem;
 
     /**
-     * Constructor for ScientistMenu.
-     * @param trackingSystem The TrackingSystem instance to be used for tracking space objects.
-     * @author Noel Lozano
+     * Constructs a ScientistMenu with the given TrackingSystem instance.
+     * @param trackingSystem the tracking system to interact with.
      */
     public ScientistMenu(TrackingSystem trackingSystem) {
         this.trackingSystem = trackingSystem;
     }
 
-    @Override
     /**
-     * Displays the main menu for the scientist and handles user input.
-     * It provides options to track objects in space, assess orbit status, or exit the menu.
-     * @author Noel Lozano
+     * Displays the scientist's menu options and handles user input.
      */
+    @Override
     public void showMenu() {
+        String[] options = {"Track Objects in Space", "Assess Orbit Status", "Back"};
         while (true) {
-            System.out.println("\n--- Scientist Menu ---");
-            System.out.println("1. Track Objects in Space");
-            System.out.println("2. Assess Orbit Status");
-            System.out.println("3. Back");
-            System.out.print("Select an option: ");
+            printOptions("Scientist Menu", options);
             int choice = getInput();
             switch (choice) {
-                case 1:
-                    trackObjectsMenu();
-                    break;
-                case 2:
-                    assessOrbitStatusMenu();
-                    break;
-                case 3:
-                    System.out.println("Exiting Scientist Menu.");
-                    return;
-                default:
-                    System.out.println("Invalid option. Try again.");
+                case 1 -> trackObjectsMenu();
+                case 2 -> assessOrbitStatusMenu();
+                case 3 -> { System.out.println("Exiting Scientist Menu."); return; }
+                default -> System.out.println("Invalid option. Try again.");
             }
         }
     }
 
     /**
-     * Displays the menu for tracking objects in space and handles user input.
-     * It provides options to view different types of space objects or go back to the main menu.
-     * @author Noel Lozano
+     * Displays sub-menu for tracking different types of space objects.
      */
     private void trackObjectsMenu() {
         while (true) {
-            System.out.println("\n--- Track Objects in Space ---");
-            System.out.println("1. Rocket Body");
-            System.out.println("2. Debris");
-            System.out.println("3. Payload");
-            System.out.println("4. Unknown");
-            System.out.println("5. Back");
-            System.out.print("Select an option: ");
+            String[] types = {"Rocket Body", "Debris", "Payload", "Unknown", "Back"};
+            printOptions("Track Objects in Space", types);
             int choice = getInput();
-            String[] types = {"ROCKET BODY", "DEBRIS", "PAYLOAD", "UNKNOWN"};
             if (choice >= 1 && choice <= 4) {
-                String currChoice = types[choice - 1];
-                List<SpaceObject> objects = trackingSystem.getObjectsByType(currChoice);
+                String type = types[choice - 1].toUpperCase();
+                List<SpaceObject> objects = trackingSystem.getObjectsByType(type);
                 displayObjects(objects);
-                SystemLog.log("Scientist tracked " + currChoice.toLowerCase() + " in space.");
-            } else if (choice == 5) return;
-            else System.out.println("Invalid option. Try again.");
-        }
-        
-    }
-
-    /**
-     * Displays the menu for assessing orbit status and handles user input.
-     * It provides options to track objects in LEO, assess if debris is still in orbit, or go back to the main menu.
-     * logs into system if the scientist wishes to track objects in LEO.
-     * @author Noel Lozano
-     */
-    private void assessOrbitStatusMenu() {
-        while (true) {
-            System.out.println("\n--- Assess Orbit Status ---");
-            System.out.println("1. Track Objects in LEO");
-            System.out.println("2. Assess if debris is still in orbit");
-            System.out.println("3. Back");
-            System.out.print("Select an option: ");
-            int choice = getInput();
-            switch (choice) {
-                case 1:
-                    SystemLog.log("Scientist assessed objects in LEO");
-                    List<SpaceObject> leoObjects = new ArrayList<>();
-                    for (String type : new String[]{"DEBRIS", "PAYLOAD", "ROCKET BODY", "UNKNOWN"}) {
-                        for (SpaceObject obj : trackingSystem.getObjectsByType(type)) {
-                            if ("LEO".equalsIgnoreCase(obj.getOrbitType())) leoObjects.add(obj);
-                        }
-                    }
-                    displayObjects(leoObjects);
-                    break;
-                case 2:
-                    assessDebrisOrbitStatus();
-                    break;
-                case 3:
-                    return;
-                default:
-                    System.out.println("Invalid option. Try again.");
+                SystemLog.log("Scientist tracked " + type.toLowerCase() + " in space.");
+            } else if (choice == 5) {
+                return;
+            } else {
+                System.out.println("Invalid option. Try again.");
             }
         }
     }
+
     /**
-     * Assesses the orbit status of debris objects and generates reports in CSV and TXT formats.
-     * It checks if debris is still in orbit based on various criteria and logs the results.
-     * @author Noel Lozano
+     * Displays sub-menu for assessing orbit status.
+     */
+    private void assessOrbitStatusMenu() {
+        while (true) {
+            String[] options = {"Track Objects in LEO", "Assess if debris is still in orbit", "Back"};
+            printOptions("Assess Orbit Status", options);
+            int choice = getInput();
+            switch (choice) {
+                case 1 -> trackLEOObjects();
+                case 2 -> assessDebrisOrbitStatus();
+                case 3 -> { return; }
+                default -> System.out.println("Invalid option. Try again.");
+            }
+        }
+    }
+
+    /**
+     * Tracks and displays all objects currently in Low Earth Orbit (LEO).
+     */
+    private void trackLEOObjects() {
+        List<SpaceObject> leoObjects = new ArrayList<>();
+        for (String type : new String[]{"DEBRIS", "PAYLOAD", "ROCKET BODY", "UNKNOWN"}) {
+            for (SpaceObject obj : trackingSystem.getObjectsByType(type)) {
+                if ("LEO".equalsIgnoreCase(obj.getOrbitType())) leoObjects.add(obj);
+            }
+        }
+        displayObjects(leoObjects);
+        SystemLog.log("Scientist assessed objects in LEO.");
+    }
+
+    /**
+     * Assesses the orbit status of debris, generates CSV and TXT reports.
      */
     private void assessDebrisOrbitStatus() {
         List<SpaceObject> debrisList = trackingSystem.getObjectsByType("DEBRIS");
@@ -174,9 +140,8 @@ public class ScientistMenu implements UserMenu {
     }
 
     /**
-     * Displays the list of space objects in a formatted manner.
-     * @param list The list of space objects to be displayed.
-     * @author Noel Lozano
+     * Displays the list of space objects.
+     * @param list List of space objects to display.
      */
     private void displayObjects(List<SpaceObject> list) {
         for (SpaceObject obj : list) {
@@ -184,19 +149,6 @@ public class ScientistMenu implements UserMenu {
                     obj.getRecordId(), obj.getSatelliteName(), obj.getCountry(), obj.getOrbitType(),
                     obj.getLaunchYear(), obj.getLaunchSite(), obj.getLongitude(), obj.getAvgLongitude(),
                     obj.getGeohash(), obj.getDaysOld());
-        }
-    }
-
-    /**
-     * Gets user input and parses it as an integer.
-     * @return The parsed integer input, or -1 if parsing fails.
-     * @author Noel Lozano
-     */
-    private int getInput() {
-        try {
-            return Integer.parseInt(scanner.nextLine().trim());
-        } catch (Exception e) {
-            return -1;
         }
     }
 }

@@ -1,39 +1,37 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Scanner;
 
 /**
- * SpaceAgencyMenu class implements the UserMenu interface and provides a menu for space agency representatives 
- * to analyze long-term impacts and generate density reports.
+ * SpaceAgencyMenu class provides a menu for space agency representatives to
+ * analyze long-term impacts and generate density reports from a CSV database.
+ * Extends BaseMenu for shared functionality.
+ * 
+ * @author Noel Lozano
  */
-public class SpaceAgencyMenu implements UserMenu {
-    private static final Scanner scanner = new Scanner(System.in);
+public class SpaceAgencyMenu extends BaseMenu {
     private static final String CSV_FILE = "debris.csv"; // Path to your CSV file
 
+    /**
+     * Displays the space agency representative's menu and handles user input.
+     */
     @Override
     public void showMenu() {
+        String[] options = {"Analyze Long-term Impact", "Generate Density Reports", "Back"};
         while (true) {
-            System.out.println("\n--- Space Agency Representative Menu ---");
-            System.out.println("1. Analyze Long-term Impact");
-            System.out.println("2. Generate Density Reports");
-            System.out.println("3. Back");
-            System.out.print("Select an option: ");
+            printOptions("Space Agency Representative Menu", options);
             int choice = getInput();
             switch (choice) {
-                case 1:
-                    analyzeLongTermImpact();
-                    break;
-                case 2:
-                    generateDensityReports();
-                    break;
-                case 3:
-                    return;
-                default:
-                    System.out.println("Invalid option. Try again.");
+                case 1 -> analyzeLongTermImpact();
+                case 2 -> generateDensityReports();
+                case 3 -> { return; }
+                default -> System.out.println("Invalid option. Try again.");
             }
         }
     }
 
+    /**
+     * Analyzes the long-term impact of space debris based on CSV data.
+     */
     private void analyzeLongTermImpact() {
         System.out.println("\n--- Analyzing Long-term Impact ---");
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
@@ -60,6 +58,9 @@ public class SpaceAgencyMenu implements UserMenu {
         }
     }
 
+    /**
+     * Generates a density report based on user-provided longitude range.
+     */
     private void generateDensityReports() {
         System.out.println("\n--- Generating Density Report ---");
         System.out.print("Enter minimum longitude: ");
@@ -92,22 +93,6 @@ public class SpaceAgencyMenu implements UserMenu {
             System.out.println("\nTotal Objects in Range: " + count);
         } catch (Exception e) {
             System.out.println("Error reading CSV: " + e.getMessage());
-        }
-    }
-
-    private int getInput() {
-        try {
-            return Integer.parseInt(scanner.nextLine().trim());
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    private double getDoubleInput() {
-        try {
-            return Double.parseDouble(scanner.nextLine().trim());
-        } catch (Exception e) {
-            return 0;
         }
     }
 

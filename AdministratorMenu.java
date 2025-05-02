@@ -1,12 +1,13 @@
 import java.io.*;
 import java.util.*;
+import auth.UserAuthenticator;
 
 /**
  * AdministratorMenu class provides a menu for administrators to create, manage,
  * and delete users in the system. Extends BaseMenu for shared functionality.
  * Users are stored in a CSV file.
  * 
- * @author Noel Lozano
+ * Author: Noel Lozano
  */
 public class AdministratorMenu extends BaseMenu {
     private static final String USER_FILE = "users.csv";
@@ -16,6 +17,8 @@ public class AdministratorMenu extends BaseMenu {
      */
     @Override
     public void showMenu() {
+        if (!UserAuthenticator.login("Administrator")) return;
+
         String[] options = {"Create User", "Manage User", "Delete User", "Back"};
         while (true) {
             printOptions("Administrator Menu", options);
@@ -30,9 +33,6 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
-    /**
-     * Creates a new user and writes the information to the CSV file.
-     */
     private void createUser() {
         System.out.print("Enter username: ");
         String username = scanner.nextLine().trim();
@@ -56,9 +56,6 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
-    /**
-     * Allows administrators to update a user's username and password.
-     */
     private void manageUser() {
         System.out.print("Enter username to manage: ");
         String targetUsername = scanner.nextLine().trim();
@@ -87,9 +84,6 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
-    /**
-     * Allows administrators to delete a user based on username.
-     */
     private void deleteUser() {
         System.out.print("Enter username to delete: ");
         String targetUsername = scanner.nextLine().trim();
@@ -105,10 +99,6 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
-    /**
-     * Loads the user data from the CSV file.
-     * @return List of users as string arrays.
-     */
     private List<String[]> loadUsers() {
         List<String[]> users = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(USER_FILE))) {
@@ -125,10 +115,6 @@ public class AdministratorMenu extends BaseMenu {
         return users;
     }
 
-    /**
-     * Saves the updated user list to the CSV file.
-     * @param users List of users to save.
-     */
     private void saveUsers(List<String[]> users) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(USER_FILE))) {
             for (String[] user : users) {

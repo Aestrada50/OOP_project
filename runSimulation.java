@@ -1,4 +1,10 @@
 import java.util.*;
+
+import auth.UserAuthenticator;
+import model.Debris;
+import model.SpaceObject;
+import model.TrackingSystem;
+
 import java.io.*;
 
 /**
@@ -32,34 +38,29 @@ public class RunSimulation {
                 break;
             }
 
-            int userType;
             try {
-                userType = Integer.parseInt(input);
+                int choice = Integer.parseInt(input);
+                switch (choice) {
+                    case 1 -> {
+                        if (UserAuthenticator.login("Administrator"))
+                            new AdministratorMenu().showMenu();
+                    }
+                    case 2 -> {
+                        if (UserAuthenticator.login("Scientist"))
+                            new ScientistMenu(trackingSystem).showMenu();
+                    }
+                    case 3 -> {
+                        if (UserAuthenticator.login("Space Agency Representative"))
+                            new SpaceAgencyMenu().showMenu();
+                    }
+                    case 4 -> {
+                        if (UserAuthenticator.login("Policymaker"))
+                            new PolicymakerMenu().showMenu();
+                    }
+                    default -> System.out.println("Invalid selection. Please choose a valid option.");
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number or 'EXIT'.");
-                continue;
-            }
-
-            UserMenu menu = null;
-            switch (userType) {
-                case 1:
-                    menu = new ScientistMenu(trackingSystem);
-                    break;
-                case 2:
-                    menu = new SpaceAgencyMenu();
-                    break;
-                case 3:
-                    menu = new PolicymakerMenu();
-                    break;
-                case 4:
-                    menu = new AdministratorMenu();
-                    break;
-                default:
-                    System.out.println("Invalid input. Try again.");
-            }
-
-            if (menu != null) {
-                menu.showMenu();
+                System.out.println("Invalid input. Please enter a number (1-4) or 'EXIT'.");
             }
         }
     }

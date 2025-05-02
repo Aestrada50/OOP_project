@@ -104,17 +104,21 @@ public class RunSimulation {
         }
     }
 
-    /**
-     * Saves the log of the program's execution to a text file.
-     * @author Noel Lozano
-     */
-    private static void saveLog() {
-        try (PrintWriter log = new PrintWriter("latest_log.txt")) {
-            log.printf("Program exited at %s%n", new java.util.Date());
-            // Add additional logging details here if needed
-            System.out.println("Log saved as 'latest_log.txt'.");
-        } catch (IOException e) {
-            System.err.println("Failed to save log: " + e.getMessage());
+/**
+ * Saves the entire session log to a text file.
+ */
+private static void saveLog() {
+    try (BufferedWriter log = new BufferedWriter(new FileWriter("latest_log.txt"))) {
+        for (String entry : SystemLog.getLogs()) {
+            log.write(entry);
+            log.newLine();
         }
+        log.write("[Session ended at " + new java.util.Date() + "]");
+        log.newLine();
+        System.out.println("Log saved as 'latest_log.txt'.");
+    } catch (IOException e) {
+        System.err.println("Failed to save log: " + e.getMessage());
     }
+}
+
 }

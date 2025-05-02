@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.*;
+import factory.SpaceObjectFactory;
+import model.SpaceObject;
 
 /**
  * The {@code TrackingSystem} class is responsible for managing and tracking space objects.
@@ -25,56 +27,37 @@ public class TrackingSystem {
      *
      * @param filename The name of the CSV file containing space object data.
      */
-    public void loadObjectsFromCSV(String filename) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line = br.readLine(); // Skip header
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",", -1); // -1 keeps empty values
-
-                if (parts.length < 20) continue; // Skip malformed rows
-
-                String objectType = parts[5].trim().toUpperCase(); // "DEBRIS", "PAYLOAD", etc.
-                String recordId = parts[0].trim();
-                String satelliteName = parts[2].trim();
-                String country = parts[3].trim();
-                String orbitType = parts[4].trim();
-                int launchYear = parseIntSafe(parts[6]);
-                String launchSite = parts[7].trim();
-                double longitude = parseDoubleSafe(parts[8]);
-                double avgLongitude = parseDoubleSafe(parts[9]);
-                String geohash = parts[10].trim();
-                int daysOld = parseIntSafe(parts[18]);
-                long conjunctionCount = parseLongSafe(parts[19]);
-
-                SpaceObject obj;
-
-                switch (objectType) {
-                    case "DEBRIS":
-                        obj = new Debris(recordId, satelliteName, country, orbitType,
-                                launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                        break;
-                    case "PAYLOAD":
-                        obj = new Payload(recordId, satelliteName, country, orbitType,
-                                launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                        break;
-                    case "ROCKET BODY":
-                        obj = new RocketBody(recordId, satelliteName, country, orbitType,
-                                launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                        break;
-                    default:
-                        obj = new Unknown(recordId, satelliteName, country, orbitType,
-                                launchYear, launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                        break;
-                }
-
-                objectTypeMap.computeIfAbsent(objectType, k -> new ArrayList<>()).add(obj);
-                objectById.put(recordId, obj);
-            }
-            System.out.println("Loaded space object data successfully.");
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+    // Updated loadObjectsFromCSV() in TrackingSystem
+public void loadObjectsFromCSV(String filename) {
+    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        String[] headers = br.readLine().split(",");
+        Map<String, Integer> headerMap = new HashMap<>();
+        for (int i = 0; i < headers.length; i++) {
+            headerMap.put(headers[i].trim().toLowerCase(), i);
         }
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] values = line.split(",", -1);
+            Map<String, String> row = new HashMap<>();
+            for (Map.Entry<String, Integer> entry : headerMap.entrySet()) {
+                row.put(entry.getKey(), values[entry.getValue()]);
+            }
+
+            String objectType = row.get("object_type");
+            if (objectType == null) continue;
+
+            SpaceObject obj = SpaceObjectFactory.getFactory(objectType).create(row);
+            objectTypeMap.computeIfAbsent(objectType.toUpperCase(), k -> new ArrayList<>()).add(obj);
+            objectById.put(obj.getRecordId(), obj);
+        }
+
+        System.out.println("Loaded space object data successfully.");
+    } catch (IOException e) {
+        System.err.println("Error reading file: " + e.getMessage());
     }
+}
+
 
     /**
      * Retrieves a list of space objects by their type.

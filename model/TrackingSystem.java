@@ -1,7 +1,8 @@
+package model;
+
 import java.io.*;
 import java.util.*;
 import factory.SpaceObjectFactory;
-import model.SpaceObject;
 
 /**
  * The {@code TrackingSystem} class is responsible for managing and tracking space objects.
@@ -24,40 +25,50 @@ public class TrackingSystem {
 
     /**
      * Loads space object data from a CSV file and populates the internal data structures.
+     * Handles arbitrary column order using header mapping.
      *
      * @param filename The name of the CSV file containing space object data.
      */
-    // Updated loadObjectsFromCSV() in TrackingSystem
-public void loadObjectsFromCSV(String filename) {
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-        String[] headers = br.readLine().split(",");
-        Map<String, Integer> headerMap = new HashMap<>();
-        for (int i = 0; i < headers.length; i++) {
-            headerMap.put(headers[i].trim().toLowerCase(), i);
-        }
-
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] values = line.split(",", -1);
-            Map<String, String> row = new HashMap<>();
-            for (Map.Entry<String, Integer> entry : headerMap.entrySet()) {
-                row.put(entry.getKey(), values[entry.getValue()]);
+    public void loadObjectsFromCSV(String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String[] headers = br.readLine().split(",");
+            Map<String, Integer> headerMap = new HashMap<>();
+            for (int i = 0; i < headers.length; i++) {
+                headerMap.put(headers[i].trim().toLowerCase(), i);
             }
 
-            String objectType = row.get("object_type");
-            if (objectType == null) continue;
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",", -1);
+                Map<String, String> row = new HashMap<>();
 
-            SpaceObject obj = SpaceObjectFactory.getFactory(objectType).create(row);
-            objectTypeMap.computeIfAbsent(objectType.toUpperCase(), k -> new ArrayList<>()).add(obj);
-            objectById.put(obj.getRecordId(), obj);
+                for (Map.Entry<String, Integer> entry : headerMap.entrySet()) {
+                    int index = entry.getValue();
+                    String value = (index < values.length) ? values[index].trim() : "";
+                    row.put(entry.getKey(), value);
+                }
+
+                String objectType = row.get("object_type");
+                if (objectType == null || objectType.isEmpty()) {
+                    System.out.println("Skipping row: missing object_type");
+                    continue;
+                }
+
+                try {
+                    SpaceObject obj = SpaceObjectFactory.getFactory(objectType).create(row);
+                    objectTypeMap.computeIfAbsent(objectType.toUpperCase(), k -> new ArrayList<>()).add(obj);
+                    objectById.put(obj.getRecordId(), obj);
+                } catch (Exception e) {
+                    System.err.println("Error processing row: " + Arrays.toString(values));
+                    e.printStackTrace();
+                }
+            }
+
+            System.out.println("Loaded space object data successfully.");
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
         }
-
-        System.out.println("Loaded space object data successfully.");
-    } catch (IOException e) {
-        System.err.println("Error reading file: " + e.getMessage());
     }
-}
-
 
     /**
      * Retrieves a list of space objects by their type.
@@ -79,12 +90,6 @@ public void loadObjectsFromCSV(String filename) {
         return objectById.get(recordId);
     }
 
-    /**
-     * Safely parses a string into an integer.
-     *
-     * @param val The string to parse.
-     * @return The parsed integer, or 0 if parsing fails.
-     */
     private int parseIntSafe(String val) {
         try {
             return Integer.parseInt(val.trim());
@@ -93,12 +98,6 @@ public void loadObjectsFromCSV(String filename) {
         }
     }
 
-    /**
-     * Safely parses a string into a long.
-     *
-     * @param val The string to parse.
-     * @return The parsed long, or 0L if parsing fails.
-     */
     private long parseLongSafe(String val) {
         try {
             return Long.parseLong(val.trim());
@@ -107,12 +106,6 @@ public void loadObjectsFromCSV(String filename) {
         }
     }
 
-    /**
-     * Safely parses a string into a double.
-     *
-     * @param val The string to parse.
-     * @return The parsed double, or 0.0 if parsing fails.
-     */
     private double parseDoubleSafe(String val) {
         try {
             return Double.parseDouble(val.trim());

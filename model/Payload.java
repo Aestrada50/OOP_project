@@ -1,3 +1,4 @@
+package model;
 /**
  * The {@code Payload} class represents a payload object in space, extending the {@code SpaceObject} class.
  * It inherits properties such as record ID, satellite name, country, orbit type, and other attributes

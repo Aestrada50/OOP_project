@@ -1,6 +1,4 @@
 package model;
-import Satellite;
-
 
 /**
  * The {@code SpaceObject} class is an abstract representation of a space object.

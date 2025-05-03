@@ -1,6 +1,9 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import model.SpaceObject;
+import model.TrackingSystem;
+
 import java.util.*;
 
 public class Tester {

@@ -1,3 +1,4 @@
+package model;
 /**
  * The {@code Unknown} class represents a space object of an unknown type.
  * It extends the {@code SpaceObject} class and inherits its properties and methods.

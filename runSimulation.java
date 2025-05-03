@@ -2,8 +2,8 @@ import java.util.*;
 
 import auth.UserAuthenticator;
 import model.Debris;
-import model.SpaceObject;
 import model.TrackingSystem;
+import model.SpaceObject;
 
 import java.io.*;
 

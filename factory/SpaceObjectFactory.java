@@ -1,6 +1,7 @@
 package factory;
-import model.SpaceObject;
 import java.util.Map;
+
+import model.SpaceObject;
 
 public abstract class SpaceObjectFactory {
     public abstract SpaceObject create(Map<String, String> data);

@@ -1,7 +1,9 @@
 package factory;
 import model.RocketBody;
-import model.SpaceObject;
+
 import java.util.Map;
+
+import model.SpaceObject;
 
 public class RocketBodyFactory extends SpaceObjectFactory {
     @Override

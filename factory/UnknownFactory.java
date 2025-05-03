@@ -1,7 +1,8 @@
 package factory;
-import model.SpaceObject;
 import model.Unknown;
 import java.util.Map;
+
+import model.SpaceObject;
 
 public class UnknownFactory extends SpaceObjectFactory {
     @Override

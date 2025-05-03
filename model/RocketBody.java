@@ -1,3 +1,4 @@
+package model;
 /**
  * The {@code RocketBody} class represents a rocket body object in space, extending the {@code SpaceObject} class.
  * It inherits properties such as record ID, satellite name, country, orbit type, and other attributes

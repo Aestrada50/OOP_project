@@ -1,3 +1,4 @@
+package model;
 /**
  * The {@code Debris} class represents a piece of space debris, extending the {@code SpaceObject} class.
  * It includes additional properties such as whether the debris is still in orbit and its risk level.

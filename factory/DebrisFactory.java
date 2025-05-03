@@ -1,7 +1,9 @@
 package factory;
 import model.Debris;
-import model.SpaceObject;
+
 import java.util.Map;
+
+import model.SpaceObject;
 
 public class DebrisFactory extends SpaceObjectFactory {
     @Override

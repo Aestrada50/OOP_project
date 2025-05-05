@@ -1,3 +1,4 @@
+package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
@@ -22,7 +23,7 @@ public class SystemTest {
     public void setUp() {
         // Simulate internal storage manually
         trackingSystem = new TrackingSystem();
-        trackingSystem.loadObjectsFromCSV("test_rso_metrics.csv");
+        trackingSystem.loadObjectsFromCSV("tests/test_rso_metrics.csv");
         debrisFactory = new DebrisFactory();
         data = new HashMap<>();
         

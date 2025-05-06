@@ -1,4 +1,6 @@
+package menu;
 import java.util.Scanner;
+
 
 /**
  * BaseMenu class provides shared utilities for user menu classes,

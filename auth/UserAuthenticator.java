@@ -31,16 +31,16 @@ public class UserAuthenticator {
                     if (fileUsername.equals(username) &&
                         filePassword.equals(password) &&
                         fileType.equalsIgnoreCase(expectedType)) {
-                        System.out.println("✅ Login successful.\n");
+                        System.out.println("Login successful.\n");
                         return true;
                     }
                 }
             }
         } catch (IOException e) {
-            System.out.println("⚠️ Login error: " + e.getMessage());
+            System.out.println("Login error: " + e.getMessage());
         }
 
-        System.out.println("❌ Login failed. Invalid credentials or role.\n");
+        System.out.println("Login failed. Invalid credentials or role.\n");
         return false;
     }
 }

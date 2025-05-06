@@ -1,3 +1,4 @@
+package menu;
 /**
  * PolicymakerMenu class provides a menu for policymakers to review debris reports
  * and assess risk levels for future space missions. Extends BaseMenu for shared functionality.

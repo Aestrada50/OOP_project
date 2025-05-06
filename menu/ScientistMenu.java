@@ -1,4 +1,7 @@
+package menu;
 import java.util.*;
+
+import log.SystemLog;
 import model.Debris;
 import model.TrackingSystem;
 import model.SpaceObject;

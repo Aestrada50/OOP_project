@@ -90,27 +90,27 @@ public class TrackingSystem {
         return objectById.get(recordId);
     }
 
-    private int parseIntSafe(String val) {
+    public static int parseIntSafe(String val, int defaultValue) {
         try {
             return Integer.parseInt(val.trim());
         } catch (Exception e) {
-            return 0;
+            return defaultValue;
         }
     }
 
-    private long parseLongSafe(String val) {
+    public static long parseLongSafe(String val, long defaultValue) {
         try {
             return Long.parseLong(val.trim());
         } catch (Exception e) {
-            return 0L;
+            return defaultValue;
         }
     }
 
-    private double parseDoubleSafe(String val) {
+    public static double parseDoubleSafe(String val, double defaultValue) {
         try {
             return Double.parseDouble(val.trim());
         } catch (Exception e) {
-            return 0.0;
+            return defaultValue;
         }
     }
 }

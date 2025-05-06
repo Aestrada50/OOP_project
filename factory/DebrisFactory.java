@@ -1,19 +1,25 @@
 package factory;
 import model.Debris;
+import model.SpaceObject;
+import model.TrackingSystem;
 
 import java.util.Map;
-
-import model.SpaceObject;
 
 public class DebrisFactory extends SpaceObjectFactory {
     @Override
     public SpaceObject create(Map<String, String> data) {
         return new Debris(
-            data.get("record_id"), data.get("satellite_name"), data.get("country"), data.get("orbit_type"),
-            Integer.parseInt(data.get("launch_year")), data.get("launch_site"),
-            Double.parseDouble(data.get("longitude")), Double.parseDouble(data.get("avg_longitude")),
-            data.get("geohash"), Integer.parseInt(data.get("days_old")), Long.parseLong(data.get("conjunction_count"))
+            data.get("record_id"),
+            data.get("satellite_name"),
+            data.get("country"),
+            data.get("orbit_type"),
+            TrackingSystem.parseIntSafe(data.get("launch_year"), 0),
+            data.get("launch_site"),
+            TrackingSystem.parseDoubleSafe(data.get("longitude"), 0.0),
+            TrackingSystem.parseDoubleSafe(data.get("avg_longitude"), 0.0),
+            data.get("geohash"),
+            TrackingSystem.parseIntSafe(data.get("days_old"), 0),
+            TrackingSystem.parseLongSafe(data.get("conjunction_count"), 0L)
         );
     }
 }
-

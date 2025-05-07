@@ -86,7 +86,7 @@ public class SystemTest {
         data.put("record_id", "D123");
         data.put("satellite_name", "DebrisOne");
         data.put("country", "USA");
-        data.put("orbit_type", "LEO");
+        data.put("approximate_orbit_type", "LEO");
         data.put("launch_year", "2000");
         data.put("launch_site", "AFETR");
         data.put("longitude", "45.0");
@@ -118,7 +118,7 @@ public class SystemTest {
         data.put("record_id", "D123");
         data.put("satellite_name", "DebrisOne");
         data.put("country", "USA");
-        data.put("orbit_type", "LEO");
+        data.put("approximate_orbit_type", "LEO");
         data.put("launch_year", "2000");
         data.put("launch_site", "AFETR");
         data.put("longitude", "45.0");

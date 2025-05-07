@@ -20,7 +20,12 @@ public class AdministratorMenu extends BaseMenu {
      */
     @Override
     public void showMenu() {
-        if (!UserAuthenticator.login("Administrator")) return;
+        try {
+            if (!UserAuthenticator.login("Administrator")) return;
+        } catch (auth.AuthenticationException e) {
+            System.out.println("[Login Failed] " + e.getMessage());
+            return;
+        }
 
         String[] options = {"Create User", "Manage User", "Delete User", "Back"};
         while (true) {
@@ -39,26 +44,28 @@ public class AdministratorMenu extends BaseMenu {
     private void createUser() {
         System.out.print("Enter username: ");
         String username = scanner.nextLine().trim();
+    
         System.out.print("Enter password: ");
         String password = scanner.nextLine().trim();
+    
         System.out.print("Enter user type (Scientist, Space Agency Representative, Policymaker, Administrator): ");
         String userType = scanner.nextLine().trim();
-
+    
         if (username.isEmpty() || password.isEmpty() || userType.isEmpty()) {
             System.out.println("Invalid input. All fields are required.");
             return;
         }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(USER_FILE, true))) {
-            bw.write(username + "," + password + "," + userType);
-            bw.newLine();
+    
+        try {
+            UserAuthenticator.createUser(username, password, userType);
             System.out.println("User created successfully.");
-            SystemLog.log("Administrator created a new user.");
-        } catch (IOException e) {
-            System.out.println("Failed to create user: " + e.getMessage());
+            SystemLog.log("Administrator created a new user: " + username);
+        } catch (auth.AuthenticationException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            SystemLog.log("User creation failed for '" + username + "': " + e.getMessage());
         }
     }
-
+    
     private void manageUser() {
         System.out.print("Enter username to manage: ");
         String targetUsername = scanner.nextLine().trim();

@@ -36,6 +36,8 @@ public class SystemTest {
         trackingSystem = null;
         debrisFactory = null;
         obj = null;
+        data = null;
+        spaceObjectFactory = null;
     }
 
 

@@ -1,15 +1,53 @@
-In-Orbit Debris Count: 38
-Exited Debris Count: 11
+In-Orbit Debris Count: 0
+Exited Debris Count: 49
 
 Exited Debris Information:
-ID: 29210 | Name: SCOUT G-1 DEB | Country: US | Orbit: LEO | Year: 1987 | Site: AFWTR | Long: 0.00 | AvgLong: 0.00 | Geo: "34.742221 | DaysOld: 0
-ID: 31518 | Name: FENGYUN 1C DEB | Country: PRC | Orbit: LEO | Year: 1999 | Site: TSC | Long: 0.00 | AvgLong: 0.00 | Geo: "38.849086 | DaysOld: 0
-ID: 32558 | Name: DELTA 4H DEB | Country: US | Orbit: Unknown Orbit Category | Year: 2007 | Site: AFETR | Long: 0.00 | AvgLong: 0.00 | Geo: "28.4917337 | DaysOld: 0
-ID: 46525 | Name: FREGAT DEB | Country: CIS | Orbit: LEO | Year: 2011 | Site: TTMTR | Long: 0.00 | AvgLong: 0.00 | Geo: "45.965 | DaysOld: 0
-ID: 50802 | Name: COSMOS 2499 DEB | Country: CIS | Orbit: LEO | Year: 2014 | Site: PKMTR | Long: 0.00 | AvgLong: 84.38 | Geo: "62.925556 | DaysOld: 0
-ID: 61354 | Name: CZ-6A DEB | Country: PRC | Orbit: LEO | Year: 2024 | Site: TSC | Long: 0.00 | AvgLong: 32.23 | Geo: "38.849086 | DaysOld: 0
-ID: 61819 | Name: CZ-6A DEB | Country: PRC | Orbit: LEO | Year: 2024 | Site: TSC | Long: 0.00 | AvgLong: 22.60 | Geo: "38.849086 | DaysOld: 0
-ID: 41009 | Name: FENGYUN 1C DEB | Country: PRC | Orbit: LEO | Year: 1999 | Site: TSC | Long: 0.00 | AvgLong: 0.00 | Geo: "38.849086 | DaysOld: 0
-ID: 40862 | Name: CZ-3C DEB | Country: PRC | Orbit: HEO | Year: 2012 | Site: XSC | Long: 0.00 | AvgLong: 0.00 | Geo: "28.246017 | DaysOld: 0
-ID: 48539 | Name: SL-12 DEB | Country: CIS | Orbit: HEO | Year: 2008 | Site: TTMTR | Long: 0.00 | AvgLong: 0.00 | Geo: "45.965 | DaysOld: 0
-ID: 52967 | Name: ATLAS 5 CENTAUR DEB | Country: US | Orbit: HEO | Year: 2018 | Site: AFETR | Long: 0.00 | AvgLong: 0.00 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: COSMOS 839 DEB | Country: CIS | Orbit: null | Year: 1976 | Site: PKMTR | Long: 29.40 | AvgLong: -32.93 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1976 | Site: AFWTR | Long: -49.98 | AvgLong: 63.25 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: SL-8 DEB | Country: CIS | Orbit: null | Year: 1991 | Site: PKMTR | Long: -162.53 | AvgLong: -98.07 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: SL-14 DEB | Country: CIS | Orbit: null | Year: 1991 | Site: PKMTR | Long: 9.34 | AvgLong: 22.61 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: SCOUT G-1 DEB | Country: US | Orbit: null | Year: 1987 | Site: AFWTR | Long: 0.00 | AvgLong: 0.00 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: CZ-4B DEB | Country: PRC | Orbit: null | Year: 2006 | Site: TSC | Long: 26.25 | AvgLong: 127.11 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: 0.00 | AvgLong: 0.00 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: DELTA 4H DEB | Country: US | Orbit: null | Year: 2007 | Site: AFETR | Long: 0.00 | AvgLong: 0.00 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: PSLV DEB | Country: IND | Orbit: null | Year: 2001 | Site: SRI | Long: -19.90 | AvgLong: 94.22 | Geo: "13.7178 | DaysOld: 0
+ID: null | Name: COSMOS 2251 DEB | Country: CIS | Orbit: null | Year: 1993 | Site: PKMTR | Long: 40.00 | AvgLong: 50.95 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: CZ-3C DEB | Country: PRC | Orbit: null | Year: 2010 | Site: XSC | Long: -133.58 | AvgLong: -101.91 | Geo: "28.246017 | DaysOld: 0
+ID: null | Name: COSMOS 1867 COOLANT | Country: CIS | Orbit: null | Year: 1987 | Site: TTMTR | Long: 142.55 | AvgLong: 26.19 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: FREGAT DEB | Country: CIS | Orbit: null | Year: 2011 | Site: TTMTR | Long: 0.00 | AvgLong: 0.00 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: THORAD AGENA D DEB | Country: US | Orbit: null | Year: 1970 | Site: AFWTR | Long: 178.21 | AvgLong: -72.05 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: COSMOS 2499 DEB | Country: CIS | Orbit: null | Year: 2014 | Site: PKMTR | Long: 0.00 | AvgLong: 84.38 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: CZ-6A DEB | Country: PRC | Orbit: null | Year: 2024 | Site: TSC | Long: 0.00 | AvgLong: 32.23 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: CZ-6A DEB | Country: PRC | Orbit: null | Year: 2024 | Site: TSC | Long: 0.00 | AvgLong: 22.60 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1976 | Site: AFWTR | Long: -32.49 | AvgLong: 127.19 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1975 | Site: AFWTR | Long: 136.69 | AvgLong: -145.41 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: SL-19 DEB | Country: CIS | Orbit: null | Year: 1994 | Site: TTMTR | Long: 164.32 | AvgLong: 35.19 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: CZ-4 DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: -158.55 | AvgLong: -177.56 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1977 | Site: AFETR | Long: 156.61 | AvgLong: -46.53 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: ARIANE 44L DEB | Country: FR | Orbit: null | Year: 1991 | Site: FRGUI | Long: -109.61 | AvgLong: 33.17 | Geo: "5.222222 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: -131.09 | AvgLong: 149.02 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: CZ-4C DEB | Country: PRC | Orbit: null | Year: 2010 | Site: TSC | Long: -91.66 | AvgLong: -30.68 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: BREEZE-M DEB | Country: CIS | Orbit: null | Year: 2008 | Site: TTMTR | Long: -26.56 | AvgLong: -78.82 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: SL-8 DEB | Country: CIS | Orbit: null | Year: 1991 | Site: PKMTR | Long: -170.95 | AvgLong: -112.61 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: 0.00 | AvgLong: 0.00 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: NOAA 16 DEB | Country: US | Orbit: null | Year: 2000 | Site: AFWTR | Long: -19.50 | AvgLong: -11.57 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: NOAA 16 DEB | Country: US | Orbit: null | Year: 2000 | Site: AFWTR | Long: 65.61 | AvgLong: 132.85 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: ATLAS 5 CENTAUR DEB | Country: US | Orbit: null | Year: 2014 | Site: AFETR | Long: -17.66 | AvgLong: 1.31 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: CZ-6A DEB | Country: PRC | Orbit: null | Year: 2022 | Site: TSC | Long: -18.74 | AvgLong: 115.25 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: CZ-6A DEB | Country: PRC | Orbit: null | Year: 2022 | Site: TSC | Long: -1.73 | AvgLong: 120.21 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1975 | Site: AFWTR | Long: -27.86 | AvgLong: -80.30 | Geo: "34.742221 | DaysOld: 0
+ID: null | Name: COSMOS 1275 DEB | Country: CIS | Orbit: null | Year: 1981 | Site: PKMTR | Long: 164.02 | AvgLong: -50.78 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: SL-16 DEB | Country: CIS | Orbit: null | Year: 1990 | Site: TTMTR | Long: 73.32 | AvgLong: -41.97 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: DELTA 1 DEB | Country: US | Orbit: null | Year: 1965 | Site: AFETR | Long: 69.42 | AvgLong: 102.43 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: METEOR 2-17 DEB | Country: CIS | Orbit: null | Year: 1988 | Site: PKMTR | Long: -141.58 | AvgLong: 53.89 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: -21.85 | AvgLong: -42.29 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: 132.55 | AvgLong: -71.53 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: -137.89 | AvgLong: 31.22 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: FENGYUN 1C DEB | Country: PRC | Orbit: null | Year: 1999 | Site: TSC | Long: 156.15 | AvgLong: -76.54 | Geo: "38.849086 | DaysOld: 0
+ID: null | Name: ARIANE 2 DEB | Country: FR | Orbit: null | Year: 1989 | Site: FRGUI | Long: -166.74 | AvgLong: 133.02 | Geo: "5.222222 | DaysOld: 0
+ID: null | Name: IRIDIUM 33 DEB | Country: US | Orbit: null | Year: 1997 | Site: TTMTR | Long: -161.53 | AvgLong: -162.01 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: COSMOS 2251 DEB | Country: CIS | Orbit: null | Year: 1993 | Site: PKMTR | Long: 130.75 | AvgLong: 0.00 | Geo: "62.925556 | DaysOld: 0
+ID: null | Name: CZ-3C DEB | Country: PRC | Orbit: null | Year: 2012 | Site: XSC | Long: 0.00 | AvgLong: 0.00 | Geo: "28.246017 | DaysOld: 0
+ID: null | Name: SL-12 DEB | Country: CIS | Orbit: null | Year: 2008 | Site: TTMTR | Long: 0.00 | AvgLong: 0.00 | Geo: "45.965 | DaysOld: 0
+ID: null | Name: ATLAS 5 CENTAUR DEB | Country: US | Orbit: null | Year: 2018 | Site: AFETR | Long: 0.00 | AvgLong: 0.00 | Geo: "28.4917337 | DaysOld: 0
+ID: null | Name: COSMOS 2251 DEB | Country: CIS | Orbit: null | Year: 1993 | Site: PKMTR | Long: -1.03 | AvgLong: 145.83 | Geo: "62.925556 | DaysOld: 0

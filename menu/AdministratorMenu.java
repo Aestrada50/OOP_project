@@ -41,6 +41,11 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
+
+    /**
+     * Prompts the administrator to create a new user.
+     * User can be of type Scientist, Space Agency Representative, Policymaker, or Administrator.
+     */
     private void createUser() {
         System.out.print("Enter username: ");
         String username = scanner.nextLine().trim();
@@ -66,6 +71,10 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
     
+    /**
+     * Allows the administrator to manage an existing user.
+     * This includes updating the username and password.
+     */
     private void manageUser() {
         System.out.print("Enter username to manage: ");
         String targetUsername = scanner.nextLine().trim();
@@ -94,6 +103,9 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
+    /*
+     * Allows the administrator to delete an existing user.
+     */
     private void deleteUser() {
         System.out.print("Enter username to delete: ");
         String targetUsername = scanner.nextLine().trim();
@@ -109,6 +121,9 @@ public class AdministratorMenu extends BaseMenu {
         }
     }
 
+    /*
+     * Loads existinjg users from the CSV file.
+     */
     private List<String[]> loadUsers() {
         List<String[]> users = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(USER_FILE))) {
@@ -125,6 +140,9 @@ public class AdministratorMenu extends BaseMenu {
         return users;
     }
 
+    /*
+     * Saves the updated list of users to the CSV file.
+     */
     private void saveUsers(List<String[]> users) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(USER_FILE))) {
             for (String[] user : users) {

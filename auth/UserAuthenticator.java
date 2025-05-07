@@ -1,3 +1,8 @@
+/**
+ * The {@code UserAuthenticator} class handles user authentication and user management.
+ * It provides functionality to authenticate users, create new users, and load user data
+ * from a CSV file. A default administrator account is seeded if no users exist.
+ */
 package auth;
 
 import java.io.*;
@@ -5,9 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Handles user authentication and loading from users.csv.
- */
 public class UserAuthenticator {
     private static final String USER_FILE = "users.csv";
     private static final Map<String, User> users = new HashMap<>();
@@ -23,10 +25,11 @@ public class UserAuthenticator {
     }
 
     /**
-     * Prompts for login input and authenticates against stored users.
+     * Prompts the user for login credentials and authenticates against stored users.
+     *
      * @param expectedRole The required role to allow login.
-     * @return true if login is successful.
-     * @throws AuthenticationException if login fails.
+     * @return {@code true} if login is successful.
+     * @throws AuthenticationException if login fails due to incorrect credentials or role mismatch.
      */
     public static boolean login(String expectedRole) throws AuthenticationException {
         System.out.print("Enter username: ");
@@ -48,8 +51,12 @@ public class UserAuthenticator {
     }
 
     /**
-     * Creates and stores a new user in memory and appends to the CSV.
-     * @throws AuthenticationException if validation fails or user exists.
+     * Creates and stores a new user in memory and appends the user to the CSV file.
+     *
+     * @param username The username of the new user.
+     * @param password The password of the new user.
+     * @param role     The role of the new user (e.g., "Administrator", "Scientist").
+     * @throws AuthenticationException if validation fails or the user already exists.
      */
     public static void createUser(String username, String password, String role) throws AuthenticationException {
         if (users.containsKey(username)) {
@@ -79,6 +86,11 @@ public class UserAuthenticator {
         System.out.println("[SUCCESS] User created: " + username + " (" + role + ")");
     }
 
+    /**
+     * Seeds a default administrator account if the user file does not exist or is empty.
+     *
+     * @throws IOException if an error occurs while writing to the file.
+     */
     private static void seedDefaultAdminIfNeeded() throws IOException {
         File file = new File(USER_FILE);
         if (!file.exists() || file.length() == 0) {
@@ -89,6 +101,11 @@ public class UserAuthenticator {
         }
     }
 
+    /**
+     * Loads user data from the CSV file into memory.
+     *
+     * @throws IOException if an error occurs while reading the file.
+     */
     private static void loadUsersFromCSV() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(USER_FILE))) {
             String line;

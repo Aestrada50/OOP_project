@@ -1,5 +1,8 @@
 import java.util.*;
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import auth.UserAuthenticator;
 import model.Debris;
 import model.TrackingSystem;
@@ -9,9 +12,6 @@ import menu.PolicymakerMenu;
 import menu.ScientistMenu;
 import menu.SpaceAgencyMenu;
 import log.SystemLog;
-
-import java.io.*;
-
 /**
  * RunSimulation class is the main entry point for the program.
  * It initializes the TrackingSystem and provides a menu for users to select their type.

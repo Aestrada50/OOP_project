@@ -47,20 +47,20 @@ public class RunSimulation {
                 int choice = Integer.parseInt(input);
                 switch (choice) {
                     case 1 -> {
-                        if (UserAuthenticator.login("Administrator"))
-                            new AdministratorMenu().showMenu();
-                    }
-                    case 2 -> {
                         if (UserAuthenticator.login("Scientist"))
                             new ScientistMenu(trackingSystem).showMenu();
                     }
-                    case 3 -> {
+                    case 2 -> {
                         if (UserAuthenticator.login("Space Agency Representative"))
                             new SpaceAgencyMenu().showMenu();
                     }
-                    case 4 -> {
+                    case 3 -> {
                         if (UserAuthenticator.login("Policymaker"))
                             new PolicymakerMenu().showMenu();
+                    }
+                    case 4 -> {
+                        if (UserAuthenticator.login("Administrator"))
+                            new AdministratorMenu().showMenu();
                     }
                     default -> System.out.println("Invalid selection. Please choose a valid option.");
                 }

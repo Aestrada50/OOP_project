@@ -1,4 +1,6 @@
+// ✅ Updated DebrisFactory.java using Debris constructor
 package factory;
+
 import model.Debris;
 import model.SpaceObject;
 import model.TrackingSystem;
@@ -12,14 +14,14 @@ public class DebrisFactory extends SpaceObjectFactory {
             data.get("record_id"),
             data.get("satellite_name"),
             data.get("country"),
-            data.get("orbit_type"),
+            data.get("approximate_orbit_type"), // updated field name
             TrackingSystem.parseIntSafe(data.get("launch_year"), 0),
             data.get("launch_site"),
-            TrackingSystem.parseDoubleSafe(data.get("longitude"), 0.0),
-            TrackingSystem.parseDoubleSafe(data.get("avg_longitude"), 0.0),
+            TrackingSystem.parseDoubleSafe(data.get("longitude"), 0),
+            TrackingSystem.parseDoubleSafe(data.get("avg_longitude"), 0),
             data.get("geohash"),
             TrackingSystem.parseIntSafe(data.get("days_old"), 0),
-            TrackingSystem.parseLongSafe(data.get("conjunction_count"), 0L)
+            TrackingSystem.parseLongSafe(data.get("conjunction_count"), 0)
         );
     }
 }

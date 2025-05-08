@@ -39,7 +39,7 @@ public class PayloadFactory extends SpaceObjectFactory {
             data.get("record_id"),
             data.get("satellite_name"),
             data.get("country"),
-            data.get("orbit_type"),
+            data.get("approximate_orbit_type"),
             TrackingSystem.parseIntSafe(data.get("launch_year"), 0),
             data.get("launch_site"),
             TrackingSystem.parseDoubleSafe(data.get("longitude"), 0.0),

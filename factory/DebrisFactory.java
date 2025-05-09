@@ -39,7 +39,7 @@ public class DebrisFactory extends SpaceObjectFactory {
             data.get("record_id"),
             data.get("satellite_name"),
             data.get("country"),
-            data.get("approximate_orbit_type"), // updated field name
+            data.get("approximate_orbit_type"), 
             TrackingSystem.parseIntSafe(data.get("launch_year"), 0),
             data.get("launch_site"),
             TrackingSystem.parseDoubleSafe(data.get("longitude"), 0),

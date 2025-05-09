@@ -36,7 +36,7 @@ public class PayloadFactory extends SpaceObjectFactory {
     @Override
     public SpaceObject create(Map<String, String> data) {
         return new Payload(
-            data.get("record_id"),
+            data.get("?record_id"),
             data.get("satellite_name"),
             data.get("country"),
             data.get("approximate_orbit_type"),

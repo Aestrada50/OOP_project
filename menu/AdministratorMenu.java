@@ -20,13 +20,7 @@ public class AdministratorMenu extends BaseMenu {
      */
     @Override
     public void showMenu() {
-        try {
-            if (!UserAuthenticator.login("Administrator")) return;
-        } catch (auth.AuthenticationException e) {
-            System.out.println("[Login Failed] " + e.getMessage());
-            return;
-        }
-
+        
         String[] options = {"Create User", "Manage User", "Delete User", "Back"};
         while (true) {
             printOptions("Administrator Menu", options);

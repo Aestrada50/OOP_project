@@ -33,8 +33,15 @@ public class TrackingSystem {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String[] headers = br.readLine().split(",");
             Map<String, Integer> headerMap = new HashMap<>();
+
+            // 🧼 Normalize headers (remove ?, quotes, normalize underscores)
             for (int i = 0; i < headers.length; i++) {
-                headerMap.put(headers[i].trim().toLowerCase(), i);
+                String cleanKey = headers[i].trim().toLowerCase()
+                    .replace("?", "")
+                    .replace("\"", "")
+                    .replace(" ", "_")
+                    .replaceAll("[^a-z0-9_]", "");
+                headerMap.put(cleanKey, i);
             }
 
             String line;
@@ -58,6 +65,11 @@ public class TrackingSystem {
                     SpaceObject obj = SpaceObjectFactory.getFactory(objectType).create(row);
                     objectTypeMap.computeIfAbsent(objectType.toUpperCase(), k -> new ArrayList<>()).add(obj);
                     objectById.put(obj.getRecordId(), obj);
+
+                    // Optional debug:
+                    if (obj.getRecordId() == null) {
+                        System.err.println("⚠️ Object created without record_id! Check factory parsing.");
+                    }
                 } catch (Exception e) {
                     System.err.println("Error processing row: " + Arrays.toString(values));
                     e.printStackTrace();
@@ -69,6 +81,7 @@ public class TrackingSystem {
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
+
 
     /**
      * Retrieves a list of space objects by their type.
